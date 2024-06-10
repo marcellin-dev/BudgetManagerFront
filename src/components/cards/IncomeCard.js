@@ -103,13 +103,13 @@ const IncomeCard = ({ isOpen, setIsOpen }) => {
     ];
 
     // Counting income total based on period so it can be used as a condition for other functions
-    const valuesAll = dataAll.map(item => item.value);
-    const sumAll = valuesAll.reduce((acc, value) => {
+    const valuesAll = dataAll?.map(item => item.value) ;
+    const sumAll = valuesAll?.length >0 ? valuesAll?.reduce((acc, value) => {
         return acc + value;
-    });
+    }): 0;
 
-    const valuesToday = dataToday.map(item => item.value);
-    const sumToday = valuesToday.reduce((acc, value) => {
+    const valuesToday = dataToday?.map(item => item.value);
+    const sumToday = valuesToday?.reduce((acc, value) => {
         return acc + value;
     });
 

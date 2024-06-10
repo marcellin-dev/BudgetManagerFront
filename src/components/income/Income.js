@@ -104,7 +104,7 @@ const Income = ({setIsAdded}) => {
         console.log("response ", response)
         if (response.status === 200) {
             console.log("categories ", response.data)
-            const datas = response.data.map((data) => {
+            const datas = response?.data?.map((data) => {
                 return {
                     id: data.id,
                     title: data.name,

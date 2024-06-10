@@ -96,13 +96,13 @@ const Sidebar = ({ show, dataExpense, dataIncome, setPage }) => {
               {demoAlert}
             </>
           }
-          {!afterWelcome &&
-            <>{buttonNormal}</>
-          }
-          <button
-            onClick={handleReset}
-            className="reset-btn">Reset
-          </button>
+          {/*{!afterWelcome &&*/}
+          {/*  <>{buttonNormal}</>*/}
+          {/*}*/}
+          {/*<button*/}
+          {/*  onClick={handleReset}*/}
+          {/*  className="reset-btn">Reset*/}
+          {/*</button>*/}
           <button
             onClick={Logout}
             className="reset-btn">
