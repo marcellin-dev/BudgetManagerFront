@@ -9,6 +9,7 @@ import React, {useState} from "react";
 import {addExpense, changePeriod} from "../../features/transaction/transactionSlice";
 import {ApiCall, notification} from "../../helpers/utils";
 import {LS} from "../../helpers/security";
+import MyLoader from "../loader/MyLoader";
 
 
 const Login = () => {
@@ -18,10 +19,12 @@ const Login = () => {
 
     const [email, setEmail] = useState("")
     const [emailError, setEmailError] = useState("")
+    const [loading,setLoading] = useState(false)
 
     const onSaveExpenseClick = async (e) => {
         e.preventDefault()
-
+if(email === "" || password === "")
+    return notification("error","Please fill all fields")
         const response = await ApiCall("auth/login", "POST", {email, password})
         console.log("response ", response)
         if(response.status === 200){
@@ -29,7 +32,7 @@ const Login = () => {
             LS.set("token", response.data.authToken)
             window.location.href = "/"
         }else {
-            alert("Invalid email or password")
+            notification("error","Invalid email or password")
         }
 
         }
@@ -86,9 +89,16 @@ const Login = () => {
                             helperText={passwordError && "Please fill in the password"}
                         />
                         <Typography align='center'>
-                            <button className='add-btn '>Login</button>
+                            <button className='add-btn '  disabled={loading}>
+                                {
+                                    loading ? <MyLoader/> : 'Login'
+                                }
+                                </button>
                         </Typography>
                     </Box>
+                  <div className="text-center">
+                      Or <Link to='/register'>Register</Link>
+                  </div>
                 </div>
             </div>
         </div>
